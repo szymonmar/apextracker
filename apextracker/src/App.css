@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+body {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -22,6 +26,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.app-shell {
+  background-color: #000;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2em;
+  box-sizing: border-box;
 }
 
 .App-link {
