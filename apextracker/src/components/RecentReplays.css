@@ -1,0 +1,87 @@
+.recent-replays {
+  margin: 3rem 0;
+}
+
+.replays-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.replay-item {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 0;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.replay-item:hover {
+  border-color: #ff2e00;
+  background: #252525;
+}
+
+.replay-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.replay-badge {
+  color: #ff2e00;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.replay-info {
+  flex: 1;
+}
+
+.replay-title {
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.replay-meta {
+  color: #888;
+  font-size: 0.75rem;
+  margin: 0.25rem 0 0 0;
+}
+
+.replay-footer {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.replay-type {
+  color: #888;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.replay-duration {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .replay-item {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .replay-footer {
+    margin-left: 0;
+  }
+}

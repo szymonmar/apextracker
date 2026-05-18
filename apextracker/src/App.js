@@ -3,21 +3,29 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import Hero from './components/Hero';
 import HeroPanel from './components/HeroPanel';
-import "@fontsource/space-grotesk";
+import PopularSeries from './components/PopularSeries';
+import UpcomingCalendar from './components/UpcomingCalendar';
+import RecentReplays from './components/RecentReplays';
 
 function Home() {
   return (
-    <Hero
-      title="Apex Legends Championship 2026"
-      backgroundImage="https://images.unsplash.com/photo-1538481143235-259d08be6815?w=1920&h=600&fit=crop"
-      isLive={true}
-      ctaText="Oglądaj teraz"
-      ctaLink="/live"
-    >
-      <HeroPanel label="Zespoły" value="32" />
-      <HeroPanel label="Nagroda" value="$1M" />
-      <HeroPanel label="Widzowie" value="2.5M" />
-    </Hero>
+    <div className="home-page">
+      <Hero
+        title="Grand Prix of Monaco / Lap 42/78"
+        isLive={true}
+        ctaText="Watch Live Now"
+        ctaLink="/live"
+      >
+        <HeroPanel label="VER" value="+2.238s" />
+        <HeroPanel label="LEC" value="Leader" />
+        <HeroPanel label="Race Info" value="Monaco" />
+      </Hero>
+      <div className="app-shell">
+        <PopularSeries />
+        <UpcomingCalendar />
+        <RecentReplays />
+      </div>
+    </div>
   );
 }
 
@@ -49,18 +57,16 @@ function App() {
   return (
     <BrowserRouter>
       <Header />  
-      <div className="app-shell">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/series" element={<Series />}>
-            <Route index element={<SeriesList />} />
-            <Route path="/series/:slug" element={<SeriesDetail />} />
-          </Route>
-          <Route path="/round/:id" element={<RoundDetail />} />
-          <Route path="/live" element={<Live />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/series" element={<Series />}>
+          <Route index element={<SeriesList />} />
+          <Route path="/series/:slug" element={<SeriesDetail />} />
+        </Route>
+        <Route path="/round/:id" element={<RoundDetail />} />
+        <Route path="/live" element={<Live />} />
+      </Routes>
     </BrowserRouter>
   );
 }
