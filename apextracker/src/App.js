@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from './components/Header';
 
 function Home() {
   return <h1>Home</h1>;
@@ -33,15 +33,7 @@ function Live() {
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/schedule">Schedule</Link> |{" "}
-        <Link to="/series">Series</Link> |{" "}
-        <Link to="/series/formula-1">Formula 1</Link> |{" "}
-        <Link to="/round/1">Round 1</Link> |{" "}
-        <Link to="/round/2">Round 2</Link> |{" "}
-        <Link to="/live">Live</Link>
-      </nav>
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
