@@ -6,6 +6,7 @@ import HeroPanel from './components/HeroPanel';
 import PopularSeries from './components/PopularSeries';
 import UpcomingCalendar from './components/UpcomingCalendar';
 import RecentReplays from './components/RecentReplays';
+import Schedule from './components/Schedule';
 
 function Home() {
   return (
@@ -29,9 +30,7 @@ function Home() {
   );
 }
 
-function Schedule() {
-  return <h1>Schedule</h1>;
-}
+// Schedule component is implemented in src/components/Schedule.js
 
 function Series() {
   return <h1>Series</h1>;
