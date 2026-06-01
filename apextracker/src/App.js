@@ -7,6 +7,7 @@ import SeriesPage from './pages/js/SeriesPage';
 import SingleSeriePage from './pages/js/SingleSeriePage';
 import SchedulePage from './pages/js/SchedulePage';
 import HomePage from './pages/js/HomePage';
+import LiveDataPage from './pages/js/LiveDataPage';
 
 
 function RoundDetail() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/series/:slug" element={<SingleSeriePage />} />
           <Route path="/round/:id" element={<RoundDetail />} />
           <Route path="/live" element={<LivePage />} />
+          <Route path="/live/:sessionId" element={<LiveDataPage svgUrl='/paths/RaceCircuitMonaco.svg' />} />
         </Routes>
     </BrowserRouter>
       

@@ -1,0 +1,249 @@
+/* GŁÓWNY KONTENER */
+.live-data-container {
+    color: var(--text-primary);
+    padding: 2em;
+    min-height: 100vh;
+
+
+    /* NAGŁÓWEK STATUSU */
+    .live-header {
+        display: flex;
+        gap: 20px;
+        background-color: var(--bg-card);
+        padding: 12px 20px;
+        margin-bottom: 20px;
+    }
+
+    .header-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+    }
+
+    .icon {
+    width: 18px;
+    height: 18px;
+    }
+
+    .green-text {
+        color: #4ade80;
+    }
+
+    /* GRID UKŁADU */
+    .main-live-grid {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        gap: 2em;
+    }
+
+    @media (max-width: 900px) {
+        .main-live-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* KARTY */
+    .map-card, .timing-card {
+        background-color: var(--bg-card);
+        padding: 2em;
+        border: 1px solid var(--border-color);
+    }
+
+    .card-title {
+        font-size: 18px;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+        color: var(--text-primary);
+    }
+
+    /* MAPA SVG */
+    .svg-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--bg-card);
+        border-radius: 6px;
+        padding: 3em 1em;
+    }
+
+    .track-svg {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        overflow: visible;
+    }
+
+    .track-line {
+        fill: none;
+        stroke: #554f4f;
+        stroke-width: 8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .start-line {
+        stroke: var(--text-primary);
+        stroke-width: 3;
+    }
+
+    /* KROPKI KIEROWCÓW I BLASK */
+    .driver-dot {
+        fill: var(--text-primary);
+    }
+
+    .dot-glow {
+        opacity: 0.4;
+    }
+
+    .driver-label {
+        fill: #ffffff;
+        font-size: 9px;
+        font-weight: bold;
+        font-family: monospace;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    /* KOLORYSTYKA ZESPOŁÓW (Dynamiczne mapowanie klas) */
+    .VER {
+        fill: #001a3d;
+        stroke: #1e3a8a;
+    }
+
+    /* Red Bull */
+    .LEC {
+        fill: #dc2626;
+        stroke: #b91c1c;
+    }
+
+    /* Ferrari */
+    .NOR {
+        fill: #ff8000;
+        stroke: #ea580c;
+    }
+
+    /* McLaren */
+    .HAM {
+        fill: #00d2be;
+        stroke: #0d9488;
+    }
+
+    /* Mercedes */
+    .PIA {
+        fill: #ff8000;
+        stroke: #ea580c;
+    }
+
+    /* McLaren 2 */
+
+    circle.dot-glow.VER {
+        fill: #1e3a8a;
+    }
+
+    circle.dot-glow.LEC {
+        fill: #dc2626;
+    }
+
+    circle.dot-glow.NOR {
+        fill: #ff8000;
+    }
+
+    circle.dot-glow.HAM {
+        fill: #00d2be;
+    }
+
+    circle.dot-glow.PIA {
+        fill: #ff8000;
+    }
+
+    /* TABELA */
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .timing-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    .timing-table th {
+        padding: 12px;
+        color: var(--text-secondary);
+        font-size: 12px;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .table-row {
+        border-bottom: 1px solid var(--border-color);
+        transition: background-color 0.2s;
+    }
+
+    .table-row:hover {
+        background-color: var(--bg-hover);
+    }
+
+    .timing-table td {
+        padding: 14px 12px;
+        font-size: 14px;
+    }
+
+    .position-col {
+        font-weight: bold;
+        width: 40px;
+    }
+
+    .gold-trophy {
+        color: #fbbf24;
+        width: 16px;
+        height: 16px;
+    }
+
+    .full-name {
+        color: var(--text-secondary);
+        font-size: 12px;
+        margin-left: 5px;
+    }
+
+    .team-strip {
+        display: inline-block;
+        width: 4px;
+        height: 14px;
+        margin-right: 8px;
+        vertical-align: middle;
+        border-radius: 2px;
+    }
+
+    /* Kolorowe paski przy nazwiskach w tabeli */
+    span.team-strip.VER {
+        background-color: #1e3a8a;
+    }
+
+    span.team-strip.LEC {
+        background-color: #dc2626;
+    }
+
+    span.team-strip.NOR {
+        background-color: #ff8000;
+    }
+
+    span.team-strip.HAM {
+        background-color: #00d2be;
+    }
+
+    span.team-strip.PIA {
+        background-color: #ff8000;
+    }
+
+    .team-cell {
+        color: var(--text-secondary);
+    }
+
+    .interval-cell {
+        font-family: monospace;
+        text-align: right;
+        color: var(--accent-red);
+    }
+}
