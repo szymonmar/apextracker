@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './SeriesView.css';
+import '../css/SeriesView.css';
 
 const SeriesView = () => {
     const seriesData = [

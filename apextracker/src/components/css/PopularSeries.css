@@ -8,11 +8,11 @@
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .section-header h2 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0;
@@ -21,7 +21,7 @@
 }
 
 .view-all {
-  color: #999;
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -30,7 +30,7 @@
 }
 
 .view-all:hover {
-  color: #ff2e00;
+  color: var(--accent-red-hover);
 }
 
 .series-grid {
@@ -40,8 +40,8 @@
 }
 
 .series-card {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 0;
   padding: 2rem 1rem;
   display: flex;
@@ -55,12 +55,12 @@
 }
 
 .series-card:hover {
-  border-color: #ff2e00;
-  background: #252525;
+  border-color: var(--accent-red-hover);
+  background: var(--bg-card-hover);
 }
 
 .series-name {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 500;
   margin: 0;

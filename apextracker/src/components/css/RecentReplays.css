@@ -9,8 +9,8 @@
 }
 
 .replay-item {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 0;
   padding: 1rem 1.5rem;
   display: flex;
@@ -21,8 +21,8 @@
 }
 
 .replay-item:hover {
-  border-color: #ff2e00;
-  background: #252525;
+  border-color: var(--accent-red-hover);
+  background: var(--bg-card-hover);
 }
 
 .replay-header {
@@ -33,7 +33,7 @@
 }
 
 .replay-badge {
-  color: #ff2e00;
+  color: var(--accent-red);
   font-size: 0.8rem;
   flex-shrink: 0;
 }
@@ -43,14 +43,14 @@
 }
 
 .replay-title {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 0.85rem;
   font-weight: 600;
   margin: 0;
 }
 
 .replay-meta {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.75rem;
   margin: 0.25rem 0 0 0;
 }
@@ -63,14 +63,14 @@
 }
 
 .replay-type {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .replay-duration {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.75rem;
 }
 

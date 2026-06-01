@@ -1,4 +1,4 @@
-import "./RecentReplays.css";
+import "../css/RecentReplays.css";
 
 function RecentReplays() {
   const replays = [

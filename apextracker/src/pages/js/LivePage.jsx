@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import "./LiveSession.css";
+import "../css/LivePage.css";
 
-function LiveSession() {
+function LivePage() {
   return (
-    <div className="gridstream-layout">
+    <div className="live-page">
       <aside className="sidebar">
         <div className="brand">GRIDSTREAM</div>
         <div className="user-profile">
@@ -181,4 +181,4 @@ function LiveSession() {
   );
 }
 
-export default LiveSession;
+export default LivePage;

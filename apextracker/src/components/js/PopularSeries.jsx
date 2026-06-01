@@ -1,4 +1,4 @@
-import "./PopularSeries.css";
+import "../css/PopularSeries.css";
 
 function PopularSeries() {
   const series = [

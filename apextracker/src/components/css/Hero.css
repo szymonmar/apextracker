@@ -1,0 +1,125 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border: none;
+  transition: all 0.3s;
+
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 4rem 4rem;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-title {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-panels {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin: 1rem 0;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    width: fit-content;
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-cta:hover {
+    background-color: var(--accent-red-hover);
+  }
+
+  .hero-content .live-badge {
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+    padding: 0.35rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      height: 400px;
+    }
+
+    .hero-content {
+      padding: 2rem 2rem 2.5rem;
+      max-width: 100%;
+    }
+
+    .hero-title {
+      font-size: 1.75rem;
+    }
+
+    .hero-panels {
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      height: 300px;
+    }
+
+    .hero-content {
+      padding: 1.5rem 1.5rem 2rem;
+    }
+
+    .hero-title {
+      font-size: 1.3rem;
+    }
+
+    .hero-panels {
+      gap: 1rem;
+    }
+
+    .hero-cta {
+      padding: 0.6rem 1rem;
+      font-size: 0.75rem;
+    }
+  }
+}
