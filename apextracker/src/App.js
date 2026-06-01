@@ -17,16 +17,17 @@ function RoundDetail() {
 function App() {
   return (
     <BrowserRouter>
-      <Header />  
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/series" element={<SeriesView />} />
-        <Route path="/series/:slug" element={<ApexTracker />} />
-        <Route path="/round/:id" element={<RoundDetail />} />
-        <Route path="/live" element={<LivePage />} />
-      </Routes>
+      <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/series" element={<SeriesView />} />
+          <Route path="/series/:slug" element={<ApexTracker />} />
+          <Route path="/round/:id" element={<RoundDetail />} />
+          <Route path="/live" element={<LivePage />} />
+        </Routes>
     </BrowserRouter>
+      
   );
 }
 

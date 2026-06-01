@@ -2,24 +2,6 @@
   margin: 3rem 0;
 }
 
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.section-header h2 {
-  color: var(--text-primary);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
 .view-all {
   color: var(--text-secondary);
   text-decoration: none;

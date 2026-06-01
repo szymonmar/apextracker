@@ -5,7 +5,7 @@
   --text-primary: #ffffff;
   --text-secondary: #999999;
   --accent-red: #e62429;
-  --accent-red-hover: #ff2e00;
+  --accent-red-hover: #cd0c1f;
   --border-color: #333333;
 }
 
@@ -22,4 +22,31 @@ body {
   margin: 0 auto;
   padding: 2rem 3rem;
   box-sizing: border-box;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-header h2 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.section-header h1 {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
