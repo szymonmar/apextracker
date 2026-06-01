@@ -1,11 +1,11 @@
 .app-header {
   background-color: #000000;
-  color: #ffffff;
+  color: var(--text-primary);
   padding: 1.2rem 1rem;
   display: flex;
   align-items: center;
   gap: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-color);
   position: relative;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .header-logo {
-  color: #DC2626;
+  color: var(--accent-red);
   font-weight: 600;
   width: auto;
   font-size: 2rem;
@@ -34,19 +34,20 @@
 }
 
 .header-nav a {
-  color: #71717A;
+  color: var(--text-secondary);
   text-decoration: none;
   padding: 0.8rem 1.2rem;
   border-radius: 0.6rem;
   text-transform: uppercase;
   font-size: 1.2rem;
+  transition: all 0.3s ease;
 }
 
 .header-nav a:hover,
 .header-nav a.active {
   text-decoration: underline;
-  text-decoration-color: #DC2626;
-  color: #DC2626;
+  text-decoration-color: var(--accent-red);
+  color: var(--accent-red);
   text-decoration-thickness: 3px;
   text-underline-offset: 29px;
 }
@@ -64,8 +65,8 @@
 
 .search-input {
   background: #212121;
-  border: 1px solid #212121;
-  color: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   padding: 0.45rem 0.65rem;
   border-radius: 0.5rem;
   min-width: 160px;
@@ -74,7 +75,7 @@
 .search-input:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(220,38,38,0.08);
-  border-color: #DC2626;
+  border-color: var(--accent-red);
 }
 
 .avatar-btn {
@@ -92,16 +93,11 @@
 
 .mode-btn {
   background: transparent;
-  color: #DC2626;
-  border: 1px solid rgba(220,38,38,0.15);
+  color: var(--accent-red);
   padding: 0.45rem 0.7rem;
   border-radius: 0.45rem;
   cursor: pointer;
   font-weight: 600;
-}
-
-.mode-btn:hover {
-  background: rgba(220,38,38,0.06);
 }
 
 .mode-btn svg {

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Hero.css";
+import "../css/Hero.css";
 
 function Hero({
   title = "Hero Title",
@@ -7,6 +7,7 @@ function Hero({
   backgroundImage = "https://via.placeholder.com/1920x600",
   ctaText = "Learn More",
   ctaLink = "/",
+  paragraph = "",
   children,
 }) {
   return (
@@ -18,6 +19,7 @@ function Hero({
       <div className="hero-content">
         {isLive && <div className="live-badge">LIVE</div>}
         <h1 className="hero-title">{title}</h1>
+        {paragraph && <p className="hero-paragraph">{paragraph}</p>}
         {children && <div className="hero-panels">{children}</div>}
         <Link to={ctaLink} className="hero-cta">
           {ctaText}

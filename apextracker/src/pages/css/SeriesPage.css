@@ -1,0 +1,73 @@
+.series-page {
+ 
+    .series-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        /* Odstępy między kartami wg Twojego zrzutu */
+    }
+
+    
+    /* STOPKA */
+    .apex-footer {
+        border-top: 1px solid var(--border-color);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        background-color: var(--bg-main);
+    }
+
+    .status {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 0.25rem;
+    }
+
+    .dot.green {
+        background-color: #28a745;
+    }
+
+    .meta {
+        display: flex;
+        gap: 2rem;
+    }
+
+    /* RESPONSYWNOŚĆ GRIDA */
+    @media (max-width: 1200px) {
+        .series-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .series-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .nav-links,
+        .search-wrapper input {
+            display: none;
+            /* Ukrywa elementy nawigacji na telefonach */
+        }
+
+        .series-card {
+            height: 220px;
+            padding-left: 1.5rem;
+        }
+
+        .card-content h2 {
+            font-size: 1.8rem;
+        }
+    }
+}

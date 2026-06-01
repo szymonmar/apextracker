@@ -1,4 +1,4 @@
-import "./HeroPanel.css";
+import "../css/HeroPanel.css";
 
 function HeroPanel({ label, value, icon, color = "#DC2626" }) {
   return (

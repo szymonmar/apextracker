@@ -1,0 +1,240 @@
+
+
+.live-page {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3em;
+  
+
+  .btn-red,
+  .btn-red-small {
+    background-color: var(--accent-red);
+    color: var(--text-primary);
+    border: none;
+    padding: 0.65rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .btn-red-small {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.55rem 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.6rem;
+  }
+
+  .live-feed-content {
+    /* padding: 1.2rem 1.5rem; */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* max-width: calc(100% - 300px); */
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .event-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .tag-red {
+    background-color: var(--accent-red);
+    padding: 0.25rem 0.65rem;
+    border-radius: 5px;
+    color: var(--text-primary);
+  }
+
+  .breadcrumb {
+    color: var(--text-muted);
+  }
+
+  .event-header h1 {
+    font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+  }
+
+
+
+  .timeline-section {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .timeline-table {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .table-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.4fr 1.2fr 1fr;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+    font-size: 0.95rem;
+  }
+
+  .table-head {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .status-text.muted,
+  .muted {
+    color: var(--text-muted);
+  }
+
+  .tag-red-outline {
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .action-link {
+    color: var(--accent-red);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .status-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .status-card {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .red-accent {
+    color: #fb7185;
+  }
+
+  .blue-accent {
+    color: #60a5fa;
+  }
+
+  .green-accent {
+    color: #34d399;
+  }
+
+  .status-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .timestamp {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: auto;
+  }
+
+  @media (max-width: 1200px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 950px) {
+    .sidebar {
+      display: none;
+    }
+
+    .top-navbar {
+      padding: 1rem 1.5rem;
+    }
+
+    .live-feed-content {
+      padding: 1.5rem;
+    }
+
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .table-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .table-head {
+      display: none;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .search-bar {
+      min-width: 160px;
+    }
+
+    .weather-widget,
+    .provider-card,
+    .countdown-panel,
+    .broadcast-panel,
+    .timeline-section,
+    .status-card {
+      padding: 1rem;
+    }
+  }
+}

@@ -1,72 +1,35 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from './components/Header';
-import Hero from './components/Hero';
-import HeroPanel from './components/HeroPanel';
-import PopularSeries from './components/PopularSeries';
-import UpcomingCalendar from './components/UpcomingCalendar';
-import RecentReplays from './components/RecentReplays';
-import Schedule from './components/Schedule';
 
-function Home() {
-  return (
-    <div className="home-page">
-      <Hero
-        title="Grand Prix of Monaco / Lap 42/78"
-        isLive={true}
-        ctaText="Watch Live Now"
-        ctaLink="/live"
-      >
-        <HeroPanel label="VER" value="+2.238s" />
-        <HeroPanel label="LEC" value="Leader" />
-        <HeroPanel label="Race Info" value="Monaco" />
-      </Hero>
-      <div className="app-shell">
-        <PopularSeries />
-        <UpcomingCalendar />
-        <RecentReplays />
-      </div>
-    </div>
-  );
-}
+import Header from './components/js/Header';
+import LivePage from './pages/js/LivePage';
+import SeriesPage from './pages/js/SeriesPage';
+import SingleSeriePage from './pages/js/SingleSeriePage';
+import SchedulePage from './pages/js/SchedulePage';
+import HomePage from './pages/js/HomePage';
+import LiveDataPage from './pages/js/LiveDataPage';
 
-// Schedule component is implemented in src/components/Schedule.js
-
-function Series() {
-  return <h1>Series</h1>;
-}
-
-function SeriesList() {
-  return <h1>Series List</h1>;
-}
-
-function SeriesDetail() {
-  return <h1>Series Detail</h1>;
-}
 
 function RoundDetail() {
   return <h1>Round Detail</h1>;
 }
 
-function Live() {
-  return <h1>Live</h1>;
-}
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />  
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/series" element={<Series />}>
-          <Route index element={<SeriesList />} />
-          <Route path="/series/:slug" element={<SeriesDetail />} />
-        </Route>
-        <Route path="/round/:id" element={<RoundDetail />} />
-        <Route path="/live" element={<Live />} />
-      </Routes>
+      <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/schedule" element={<SchedulePage />} />
+          <Route path="/series" element={<SeriesPage />} />
+          <Route path="/series/:slug" element={<SingleSeriePage />} />
+          <Route path="/round/:id" element={<RoundDetail />} />
+          <Route path="/live" element={<LivePage />} />
+          <Route path="/live/:sessionId" element={<LiveDataPage svgUrl='/paths/RaceCircuitMonaco.svg' />} />
+        </Routes>
     </BrowserRouter>
+      
   );
 }
 

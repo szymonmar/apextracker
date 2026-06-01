@@ -9,8 +9,8 @@
 }
 
 .calendar-event {
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 0;
   padding: 1.5rem;
   display: grid;
@@ -21,8 +21,8 @@
 }
 
 .calendar-event:hover {
-  border-color: #ff2e00;
-  background: #252525;
+  border-color: var(--accent-red);
+  background: var(--bg-card-hover);
 }
 
 .event-date {
@@ -34,8 +34,8 @@
 
 .date-badge {
   background: rgba(255, 46, 0, 0.2);
-  border: 1px solid #ff2e00;
-  color: #ff2e00;
+  border: 1px solid var(--accent-red);
+  color: var(--accent-red);
   padding: 0.5rem 1rem;
   border-radius: 0;
   font-size: 0.8rem;
@@ -56,21 +56,21 @@
 }
 
 .event-series {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .event-name {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1rem;
   font-weight: 600;
   margin: 0;
 }
 
 .event-location {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.8rem;
   margin: 0;
 }
@@ -94,23 +94,23 @@
 }
 
 .btn-details {
-  background: #ff2e00;
-  color: #fff;
+  background: var(--accent-red);
+  color: var(--text-primary);
 }
 
 .btn-details:hover {
-  background: #cc2500;
+  background: var(--accent-red-hover);
 }
 
 .btn-preview {
   background: transparent;
-  border: 1px solid #333;
-  color: #fff;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
 }
 
 .btn-preview:hover {
-  border-color: #ff2e00;
-  color: #ff2e00;
+  border-color: var(--accent-red-hover);
+  color: var(--accent-red);
 }
 
 @media (max-width: 768px) {

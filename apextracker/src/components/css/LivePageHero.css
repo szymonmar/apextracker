@@ -1,0 +1,115 @@
+/* Reguła animacji pulsu dla przezroczystości */
+@keyframes pulse-animation {
+    from {
+        opacity: 0.3;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.live-page-hero-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 1.5rem;
+  
+
+    .countdown-panel {
+        background: linear-gradient(rgba(20, 20, 20, 0.85), rgba(20, 20, 20, 0.95)),
+        url('https://via.placeholder.com/1200x700/111/333?text=F1+Car+Background') center/cover no-repeat;
+        border: 1px solid var(--border-color);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .status-indicator {
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+    }
+
+    .timer {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        margin: 1.25rem 0 2rem;
+        flex-wrap: wrap;
+    }
+
+    .time-box {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .number {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .number.red {
+        color: var(--accent-red);
+    }
+
+    .label {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        letter-spacing: 1px;
+    }
+
+    .separator {
+        font-size: 2.4rem;
+        font-weight: 800;
+        transform: translateY(-6px);
+    }
+
+    .action-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+    }
+
+    /* Bazowy wygląd kropki (wspólny dla wszystkich stanów) */
+    .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px; /* Odstęp między kropką a tekstem */
+    transition: background-color 0.3s ease;
+    }
+
+    /* 1. Stan: COUNTDOWN - Biała kropka, która pulsuje */
+    .state-countdown .dot {
+    background-color: #ffffff;
+    animation: pulse-animation 1s infinite alternate;
+    }
+
+    /* 2. Stan: LIVE - Czerwona kropka, która pulsuje */
+    .state-live .dot {
+    background-color: var(--accent-red);
+    animation: pulse-animation 1s infinite alternate;
+    }
+
+    /* 3. Stan: FINISHED - Kropka świeci (np. na szaro/zielono) bez animacji */
+    .state-finished .dot {
+    background-color: #fff; /* Zielona kropka oznaczająca sukces/koniec (możesz zmienić np. na #888 szary) */
+    animation: none; /* Wyłączenie jakiejkolwiek animacji */
+    opacity: 1;
+    }
+
+    .event-image {
+        border: 1px solid var(--border-color);
+        background-size: cover;
+        background-position: center;
+    }
+
+    
+}

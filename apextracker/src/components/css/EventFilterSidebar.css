@@ -1,0 +1,87 @@
+.schedule-filters {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    color: var(--text-secondary);
+  
+    input[type="checkbox"] {
+        accent-color: var(--accent-red);
+        transform: scale(1.5);
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    select {
+        width: 100%;
+        padding: 0.5rem;
+        background: var(--bg-main);
+        border: 1px solid var(--border-color);
+        border-bottom: 2px solid var(--accent-red);
+        color: var(--text-secondary);
+    }
+
+    .filters-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .filters-header h4 {
+        margin: 0;
+        color: var(--text-primary);
+        letter-spacing: 1px;
+    }
+
+    .reset-btn {
+        background: transparent;
+        border: none;
+        color: var(--accent-red);
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+    .filter-group {
+        margin: 2rem 0;
+    }
+
+    .group-title {
+        display: block;
+        font-size: 0.75rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+    }
+
+    .date-range .date-inputs {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .date-range label {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+    }
+
+    .date-range input {
+        padding: 0.5rem;
+        background: var(--bg-main);
+        border: 1px solid var(--border-color);
+        border-bottom: 2px solid var(--accent-red);
+        color: var(--text-secondary);
+    }
+
+    .date-input {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        width: calc(50% - 0.25rem);
+    }
+
+    .checkboxes label {
+        display: block;
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+    }
+}

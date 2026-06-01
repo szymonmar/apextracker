@@ -1,4 +1,4 @@
-import "./UpcomingCalendar.css";
+import "../css/UpcomingCalendar.css";
 import { NavLink } from "react-router-dom";
 
 function UpcomingCalendar() {
