@@ -4,7 +4,7 @@ import PopularSeries from '../../components/js/PopularSeries';
 import UpcomingCalendar from '../../components/js/UpcomingCalendar';
 import RecentReplays from '../../components/js/RecentReplays';
 
-function Home() {
+function HomePage() {
   return (
     <div className="home-page">
       <Hero
@@ -26,4 +26,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

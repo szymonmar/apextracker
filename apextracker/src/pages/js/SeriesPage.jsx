@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/SeriesPage.css';
 import SeriesGridCard from '../../components/js/SeriesGridCard';
 
-const SeriesView = () => {
+const SeriesPage = () => {
     const seriesData = [
         { title: 'FORMULA 1', slug: 'formula-1' },
         { title: 'FORMULA 2', slug: 'formula-2' },
@@ -50,4 +50,4 @@ const SeriesView = () => {
     );
 };
 
-export default SeriesView;
+export default SeriesPage;
