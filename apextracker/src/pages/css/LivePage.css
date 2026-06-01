@@ -1,130 +1,10 @@
 
 
 .live-page {
-  display: flex;
-  min-height: 100vh;
-  background-color: var(--bg-dark);
-    
-  .sidebar {
-    width: 200px;
-    background-color: var(--bg-panel);
-    border-right: 1px solid var(--border-color);
-    padding: 2rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .brand {
-    font-size: 0.95rem;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--accent-red);
-  }
-
-  .user-profile {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #e62429, #8a1c1f);
-    border: 2px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .username {
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-
-  .status {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-    display: inline-block;
-    border-radius: 50%;
-    background: var(--accent-red);
-    margin-right: 0.45rem;
-  }
-
-  .nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .nav-item,
-  .nav-link {
-    color: var(--text-primary);
-    text-decoration: none;
-    padding: 0.9rem 1rem;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    transition: background-color 0.2s ease;
-  }
-
-  .nav-item:hover,
-  .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.06);
-  }
-
-  .nav-item.active,
-  .nav-link.active {
-    background-color: rgba(230, 36, 41, 0.18);
-    color: #fff;
-  }
-
-  .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .top-navbar {
-    min-height: 62px;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    background-color: var(--bg-card);
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .nav-links .nav-link {
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-  }
-
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .search-bar {
-    background: #111;
-    border: 1px solid var(--border-color);
-    padding: 0.45rem 0.65rem;
-    border-radius: 999px;
-    color: var(--text-primary);
-    min-width: 160px;
-  }
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3em;
+  
 
   .btn-red,
   .btn-red-small {
@@ -154,11 +34,11 @@
   }
 
   .live-feed-content {
-    padding: 1.2rem 1rem 1.5rem;
+    /* padding: 1.2rem 1.5rem; */
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: calc(100% - 200px);
+    /* max-width: calc(100% - 300px); */
     margin: 0 auto;
     width: 100%;
   }
@@ -204,177 +84,11 @@
     font-size: 0.88rem;
   }
 
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1.8fr 1fr;
-    gap: 1.5rem;
-  }
 
-  .countdown-panel {
-    background: linear-gradient(rgba(20, 20, 20, 0.85), rgba(20, 20, 20, 0.95)),
-      url('https://via.placeholder.com/1200x700/111/333?text=F1+Car+Background') center/cover no-repeat;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .status-indicator {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-  }
-
-  .timer {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    margin: 1.25rem 0 2rem;
-    flex-wrap: wrap;
-  }
-
-  .time-box {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .number {
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1;
-  }
-
-  .number.red {
-    color: var(--accent-red);
-  }
-
-  .label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-  }
-
-  .separator {
-    font-size: 2.4rem;
-    font-weight: 800;
-    transform: translateY(-6px);
-  }
-
-  .action-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.85rem;
-  }
-
-  .broadcast-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .broadcast-panel h3 {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-  }
-
-  .provider-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .provider-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 0.85rem;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-  }
-
-  .provider-card.active {
-    border-left: 4px solid var(--accent-red);
-  }
-
-  .provider-card.locked {
-    opacity: 0.7;
-  }
-
-  .provider-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 0.85rem;
-  }
-
-  .provider-logo.f1 {
-    background: var(--bg-card);
-  }
-
-  .provider-logo.sky {
-    background: #0f172a;
-  }
-
-  .provider-info h4 {
-    margin-bottom: 0.15rem;
-    font-size: 0.9rem;
-  }
-
-  .provider-info p {
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    margin: 0;
-  }
-
-  .arrow,
-  .lock-icon {
-    margin-left: auto;
-    font-size: 1rem;
-  }
-
-  .weather-widget {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 1rem;
-    border-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .weather-label {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    margin-bottom: 0.35rem;
-  }
-
-  .weather-temp {
-    font-size: 0.95rem;
-    font-weight: 700;
-  }
-
-  .weather-icon {
-    font-size: 1.6rem;
-  }
 
   .timeline-section {
     background-color: var(--bg-panel);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
     padding: 1rem;
   }
 
@@ -417,7 +131,6 @@
     border: 1px solid var(--accent-red);
     color: var(--accent-red);
     padding: 0.25rem 0.6rem;
-    border-radius: 6px;
     font-size: 0.75rem;
   }
 
@@ -437,7 +150,6 @@
     background-color: var(--bg-panel);
     border: 1px solid var(--border-color);
     padding: 1.5rem;
-    border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;

@@ -1,118 +1,32 @@
 import { Link } from "react-router-dom";
 import "../css/LivePage.css";
+import SessionsListSidebar from "../../components/js/SessionsListSidebar";
+import LivePageHero from "../../components/js/LivePageHero";
 
 function LivePage() {
   return (
-    <div className="live-page">
-      <aside className="sidebar">
-        <div className="brand">GRIDSTREAM</div>
-        <div className="user-profile">
-          <div className="avatar"></div>
-          <div>
-            <div className="username">ANALYST_01</div>
-            <div className="status">
-              <span className="dot"></span> TELEMETRY ACTIVE
-            </div>
-          </div>
-        </div>
-        <nav className="nav-menu">
-        </nav>
-      </aside>
-
-      <main className="main-content">
-        <header className="top-navbar">
-          <div className="nav-links">
-          </div>
-          <div className="nav-actions">
-            <input
-              type="text"
-              placeholder="SEARCH TELEMETRY..."
-              className="search-bar"
-              aria-label="Search telemetry"
-            />
-            <button className="btn-red">GO LIVE</button>
-          </div>
-        </header>
+    <div className="live-page app-shell">
+        <SessionsListSidebar sessions={[
+          { id: 1, name: 'MONACO GP',  serieShort: 'F1', time: 'SAT 13:30', active: true},,
+          { id: 2, name: '24H OF LE MANS', serieShort: 'WEC', time: 'SAT 16:00', active: false},
+          { id: 3, name: 'ITALIAN GP', serieShort: 'MGP', time: 'SAT 15:00', active: false},
+        ]} />
 
         <div className="live-feed-content">
           <div className="event-header">
-            <div className="tags">
-              <span className="tag tag-red">LIVE NOW</span>
-              <span className="breadcrumb">
-                LOC: MONTE CARLO, MONACO // MAIN_STREAM_LINK_01
-              </span>
-            </div>
             <h1>FORMULA 1 MONACO GRAND PRIX</h1>
             <div className="event-meta">
-              <span>⏱ NEXT SESSION: QUALIFYING</span>
-              <span>🌡 TRACK: 42°C</span>
+              <span>⏱ QUALIFYING</span>
+              <span>🌡 TRACK TEMP: 42°C</span>
               <span>🌧 RAIN PROB: 12%</span>
             </div>
           </div>
 
-          <section className="hero-grid">
-            <div className="countdown-panel">
-              <div className="status-indicator">
-                <span className="dot"></span> COUNTDOWN TO GREEN LIGHT
-              </div>
-              <div className="timer">
-                <div className="time-box">
-                  <span className="number">02</span>
-                  <span className="label">HRS</span>
-                </div>
-                <span className="separator">:</span>
-                <div className="time-box">
-                  <span className="number">48</span>
-                  <span className="label">MIN</span>
-                </div>
-                <span className="separator">:</span>
-                <div className="time-box">
-                  <span className="number red">14</span>
-                  <span className="label">SEC</span>
-                </div>
-              </div>
-              <div className="action-buttons">
-                <button className="btn-red">▶ JOIN BROADCAST</button>
-                <button className="btn-outline">SET REMINDER</button>
-              </div>
-            </div>
-
-            <div className="broadcast-panel">
-              <h3>BROADCAST UNITS</h3>
-              <div className="provider-list">
-                <div className="provider-card active">
-                  <div className="provider-logo f1">F1TV</div>
-                  <div className="provider-info">
-                    <h4>PRO ACCESS</h4>
-                    <p>UHD STREAM + TELEMETRY</p>
-                  </div>
-                  <span className="arrow">→</span>
-                </div>
-                <div className="provider-card locked">
-                  <div className="provider-logo sky">SKY</div>
-                  <div className="provider-info">
-                    <h4>SKY SPORTS F1</h4>
-                    <p>SATELLITE / CABLE</p>
-                  </div>
-                  <span className="lock-icon">🔒</span>
-                </div>
-              </div>
-              <div className="weather-widget">
-                <div className="weather-info">
-                  <span className="weather-label">LOCAL WEATHER</span>
-                  <span className="weather-temp">24°C / SUNNY</span>
-                </div>
-                <div className="weather-icon">☀️</div>
-              </div>
-            </div>
-          </section>
+          <LivePageHero startTime={new Date('2026-06-01T13:30:00')}finished={false} />
 
           <section className="timeline-section">
             <div className="section-header">
-              <h3>SESSION TIMELINE (MAY 24-26)</h3>
-              <div className="legend">
-                <span className="dot gray"></span> DONE <span className="dot red"></span> ACTIVE
-              </div>
+              <h3>ROUND TIMELINE (JUN 5-7)</h3>
             </div>
             <div className="timeline-table">
               <div className="table-row table-head">
@@ -176,7 +90,6 @@ function LivePage() {
             </div>
           </section>
         </div>
-      </main>
     </div>
   );
 }
