@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/SeriesView.css';
+import '../css/SeriesPage.css';
 import SeriesGridCard from '../../components/js/SeriesGridCard';
 
 const SeriesView = () => {

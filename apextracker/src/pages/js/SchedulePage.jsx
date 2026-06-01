@@ -1,5 +1,5 @@
 
-import "../css/Schedule.css";
+import "../css/SchedulePage.css";
 
 function randLorem(wordCount = 3) {
   const words = "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor".split(" ");

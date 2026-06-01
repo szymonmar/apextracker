@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import '../css/ApexTracker.css';
+import '../css/SingleSeriePage.css';
 
 const ApexTracker = () => {
     const { slug } = useParams();
