@@ -22,7 +22,7 @@
         height: 100%;
         z-index: 1;
         background: linear-gradient(to right, rgba(5, 5, 5, 0.9) 0%, rgba(5, 5, 5, 0.4) 60%),
-            url('../../images/Formula_picture.png') center/cover;
+            url('/public/images/Formula_picture.png') center/cover;
         opacity: 0.8;
         transition: opacity 0.3s ease;
     }
