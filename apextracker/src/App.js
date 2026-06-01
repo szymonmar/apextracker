@@ -6,6 +6,9 @@ import HeroPanel from './components/HeroPanel';
 import PopularSeries from './components/PopularSeries';
 import UpcomingCalendar from './components/UpcomingCalendar';
 import RecentReplays from './components/RecentReplays';
+import LiveSession from './components/LiveSession';
+import SeriesView from './components/SeriesView';
+import ApexTracker from './components/ApexTracker';
 import Schedule from './components/Schedule';
 
 function Home() {
@@ -32,10 +35,6 @@ function Home() {
 
 // Schedule component is implemented in src/components/Schedule.js
 
-function Series() {
-  return <h1>Series</h1>;
-}
-
 function SeriesList() {
   return <h1>Series List</h1>;
 }
@@ -49,7 +48,7 @@ function RoundDetail() {
 }
 
 function Live() {
-  return <h1>Live</h1>;
+  return <LiveSession />;
 }
 
 function App() {
@@ -59,10 +58,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/schedule" element={<Schedule />} />
-        <Route path="/series" element={<Series />}>
-          <Route index element={<SeriesList />} />
-          <Route path="/series/:slug" element={<SeriesDetail />} />
-        </Route>
+        <Route path="/series" element={<SeriesView />} />
+        <Route path="/series/:slug" element={<ApexTracker />} />
         <Route path="/round/:id" element={<RoundDetail />} />
         <Route path="/live" element={<Live />} />
       </Routes>
