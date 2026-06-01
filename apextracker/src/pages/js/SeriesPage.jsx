@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../css/SeriesView.css';
+import '../css/SeriesPage.css';
+import SeriesGridCard from '../../components/js/SeriesGridCard';
 
-const SeriesView = () => {
+const SeriesPage = () => {
     const seriesData = [
         { title: 'FORMULA 1', slug: 'formula-1' },
         { title: 'FORMULA 2', slug: 'formula-2' },
@@ -22,23 +22,18 @@ const SeriesView = () => {
     ];
 
     return (
-        <div className="series-layout">
+        <div className="series-page">
             
-            {/* GŁÓWNA ZAWARTOŚĆ - GRID KART */}
-            <main className="series-main">
+            <div className="app-shell">
+                <div className="section-header">
+                    <h1>Racing series</h1>
+                </div>
                 <div className="series-grid">
                     {seriesData.map((series, index) => (
-                        <div className="series-card" key={index}>
-                            <div className="card-background"></div>
-
-                            <div className="card-content">
-                                <h2>{series.title}</h2>
-                                <Link to={`/series/${series.slug}`} className="btn-read-more">VIEW SERIES</Link>
-                            </div>
-                        </div>
+                        <SeriesGridCard key={index} series={series} />
                     ))}
                 </div>
-            </main>
+            </div>
 
             {/* STOPKA */}
             <footer className="apex-footer">
@@ -55,4 +50,4 @@ const SeriesView = () => {
     );
 };
 
-export default SeriesView;
+export default SeriesPage;

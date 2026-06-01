@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from './components/js/Header';
 import LivePage from './pages/js/LivePage';
-import SeriesView from './pages/js/SeriesView';
-import ApexTracker from './pages/js/ApexTracker';
-import Schedule from './pages/js/Schedule';
-import Home from './pages/js/Home';
+import SeriesPage from './pages/js/SeriesPage';
+import SingleSeriePage from './pages/js/SingleSeriePage';
+import SchedulePage from './pages/js/SchedulePage';
+import HomePage from './pages/js/HomePage';
 
 
 function RoundDetail() {
@@ -17,16 +17,17 @@ function RoundDetail() {
 function App() {
   return (
     <BrowserRouter>
-      <Header />  
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/series" element={<SeriesView />} />
-        <Route path="/series/:slug" element={<ApexTracker />} />
-        <Route path="/round/:id" element={<RoundDetail />} />
-        <Route path="/live" element={<LivePage />} />
-      </Routes>
+      <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/schedule" element={<SchedulePage />} />
+          <Route path="/series" element={<SeriesPage />} />
+          <Route path="/series/:slug" element={<SingleSeriePage />} />
+          <Route path="/round/:id" element={<RoundDetail />} />
+          <Route path="/live" element={<LivePage />} />
+        </Routes>
     </BrowserRouter>
+      
   );
 }
 

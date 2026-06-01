@@ -80,6 +80,12 @@
     letter-spacing: 0.1em;
   }
 
+  .hero-paragraph {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: -1em;
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .hero {
