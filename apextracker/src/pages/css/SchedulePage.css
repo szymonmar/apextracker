@@ -1,8 +1,7 @@
 .schedule-page {
   display: grid;
   grid-template-columns: 300px 1fr;
-  gap: 2rem;
-  padding: 2rem 1rem;
+  gap: 3rem;
   color: var(--text-primary);
 
   .schedule-list .schedule-header h1 {

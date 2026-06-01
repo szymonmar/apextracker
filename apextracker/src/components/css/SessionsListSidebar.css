@@ -1,0 +1,60 @@
+.session-list-sidebar {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 1rem 0;
+    color: var(--text-secondary);
+
+  
+
+  h4 {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+  }
+
+  .session {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    padding: 1rem;
+   
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e62429, #8a1c1f);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+  }
+
+  .username {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+  }
+
+  .status {
+    color: var(--text-secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .session:hover {
+    background: var(--bg-card-hover);
+  }
+
+  .session.active {
+    background: var(--bg-card-hover);
+  }
+
+}
