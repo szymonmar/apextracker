@@ -6,7 +6,7 @@ import LivePage from './pages/js/LivePage';
 import SeriesPage from './pages/js/SeriesPage';
 import SingleSeriePage from './pages/js/SingleSeriePage';
 import SchedulePage from './pages/js/SchedulePage';
-import Home from './pages/js/HomePage';
+import HomePage from './pages/js/HomePage';
 
 
 function RoundDetail() {
@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
       <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/schedule" element={<SchedulePage />} />
           <Route path="/series" element={<SeriesPage />} />
           <Route path="/series/:slug" element={<SingleSeriePage />} />
