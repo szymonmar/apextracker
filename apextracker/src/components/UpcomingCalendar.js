@@ -1,4 +1,5 @@
 import "./UpcomingCalendar.css";
+import { NavLink } from "react-router-dom";
 
 function UpcomingCalendar() {
   const events = [
@@ -29,7 +30,7 @@ function UpcomingCalendar() {
     <section className="upcoming-calendar">
       <div className="section-header">
         <h2>Upcoming Calendar</h2>
-        <a href="#" className="view-all">Schedule View</a>
+        <NavLink to="/schedule" className="view-all">Schedule View</NavLink>
       </div>
       <div className="calendar-events">
         {events.map((event) => (

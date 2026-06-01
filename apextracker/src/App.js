@@ -9,6 +9,7 @@ import RecentReplays from './components/RecentReplays';
 import LiveSession from './components/LiveSession';
 import SeriesView from './components/SeriesView';
 import ApexTracker from './components/ApexTracker';
+import Schedule from './components/Schedule';
 
 function Home() {
   return (
@@ -32,9 +33,7 @@ function Home() {
   );
 }
 
-function Schedule() {
-  return <h1>Schedule</h1>;
-}
+// Schedule component is implemented in src/components/Schedule.js
 
 function SeriesList() {
   return <h1>Series List</h1>;
