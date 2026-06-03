@@ -1,26 +1,29 @@
 import "../css/PopularSeries.css";
+import { Link } from "react-router-dom";
 
 function PopularSeries() {
   const series = [
-    { id: 1, name: "Series 1" },
-    { id: 2, name: "Series 2" },
-    { id: 3, name: "Series 3" },
-    { id: 4, name: "Series 4" },
-    { id: 5, name: "Series 5" },
-    { id: 6, name: "Series 6" },
+    { id: 1, name: "Formula 1", slug: "f1" },
+    { id: 2, name: "World Endurance Championship", slug: "wec" },
+    { id: 3, name: "MotoGP", slug: "motogp" },
+    { id: 4, name: "Formula 2", slug: "f2" },
+    { id: 5, name: "Formula E", slug: "fe" },
+    { id: 6, name: "World Rally Championship", slug: "wrc" },
   ];
 
   return (
     <section className="popular-series">
       <div className="section-header">
         <h2>Popular Series</h2>
-        <a href="#" className="view-all">View All</a>
+        <Link to="/series" className="view-all">
+          View All
+        </Link>
       </div>
-      <div className="series-grid">
+      <div className="pop-series-grid">
         {series.map((s) => (
-          <div key={s.id} className="series-card">
-            <p className="series-name">{s.name}</p>
-          </div>
+          <Link key={s.id} to={`/series/${s.slug}`} className="pop-series-card">
+            <p className="pop-series-name">{s.name}</p>
+          </Link>
         ))}
       </div>
     </section>
