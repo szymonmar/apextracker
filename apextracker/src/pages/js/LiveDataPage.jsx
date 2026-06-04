@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Trophy, Clock, Flag, Radio, ChevronLeft, ChevronRight, Maximize2, Settings, X } from 'lucide-react';
+import CameraSelectPopup from '../../components/js/CameraSelectPopup';
 import '../css/LiveDataPage.css';
 
 const MOCK_LOGS = [
@@ -43,11 +44,11 @@ const INITIAL_DRIVERS = [
   { id: 10, pos: 10, code: 'COL', color: '#1879d4', interval: '+0.890s', speed: 0.016 },
 ];
 
-const CAMERA_FEEDS = [
-  { id: 1, label: 'Onboard — VER', driver: 'VER', color: '#004a90', angle: 'Onboard' },
-  { id: 2, label: 'Onboard — NOR', driver: 'NOR', color: '#FF8700', angle: 'Onboard' },
-  { id: 3, label: 'Pit Lane Cam', driver: null, color: '#6b7280', angle: 'Static' },
-  { id: 4, label: 'Helicopter Shot', driver: null, color: '#374151', angle: 'Aerial' },
+const INITIAL_CAMERA_FEEDS = [
+  { id: 1, label: 'Onboard — VER', driver: 'VER', color: '#004a90', angle: 'Onboard', viewId: 'ob-ver' },
+  { id: 2, label: 'Onboard — NOR', driver: 'NOR', color: '#FF8700', angle: 'Onboard', viewId: 'ob-nor' },
+  { id: 3, label: 'Pit Lane Cam',  driver: null,   color: '#6b7280', angle: 'Static',  viewId: 'pit-main' },
+  { id: 4, label: 'Helicopter Shot', driver: null, color: '#374151', angle: 'Aerial',  viewId: 'st-heli' },
 ];
 
 const MAX_SESSION_SECONDS = 3700;
@@ -65,12 +66,13 @@ export default function LiveDataPage({ svgUrl }) {
   const [timelineValue, setTimelineValue] = useState(MAX_SESSION_SECONDS);
   const [isLive, setIsLive] = useState(true);
 
-  // Panel slide state
   const [showCameras, setShowCameras] = useState(false);
-
-  // Camera fullscreen state: null = grid, number = that camera's id fills the grid
   const [expandedCamera, setExpandedCamera] = useState(null);
   const [fullscreenCamera, setFullscreenCamera] = useState(null);
+  const [cameraFeeds, setCameraFeeds] = useState(INITIAL_CAMERA_FEEDS);
+
+  // Settings popup state
+  const [settingsPopup, setSettingsPopup] = useState(null); // { slotId, slotLabel, viewId }
 
   const trackPathRef = useRef(null);
   const logsWrapperRef = useRef(null);
@@ -81,7 +83,7 @@ export default function LiveDataPage({ svgUrl }) {
     const hrs = Math.floor(secondsFromEnd / 3600);
     const mins = Math.floor((secondsFromEnd % 3600) / 60);
     const secs = secondsFromEnd % 60;
-    const pad = (num) => String(num).padStart(2, '0');
+    const pad = (n) => String(n).padStart(2, '0');
     return `-${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
   };
 
@@ -107,12 +109,9 @@ export default function LiveDataPage({ svgUrl }) {
       isInitialRender.current = false;
       return;
     }
-    const threshold = 50;
-    const isAtBottom = container.scrollHeight - container.scrollTop - container.clientHeight <= threshold;
+    const isAtBottom = container.scrollHeight - container.scrollTop - container.clientHeight <= 50;
     if (isAtBottom) {
-      setTimeout(() => {
-        container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
-      }, 50);
+      setTimeout(() => container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' }), 50);
     }
   }, [currentLogs]);
 
@@ -182,19 +181,28 @@ export default function LiveDataPage({ svgUrl }) {
     setFullscreenCamera(cameraId);
   };
 
-  const handleCloseFullscreen = () => {
-    setFullscreenCamera(null);
+  const handleCloseFullscreen = () => setFullscreenCamera(null);
+
+  const handleSettingsClick = (e, cam) => {
+    e.stopPropagation();
+    setSettingsPopup({ slotId: cam.id, slotLabel: cam.label, viewId: cam.viewId });
   };
 
-  const handleSettingsClick = (e) => {
-    e.stopPropagation();
-    // Placeholder — settings screen to be implemented
+  const handleCameraSelect = (slotId, view) => {
+    setCameraFeeds((prev) =>
+      prev.map((feed) =>
+        feed.id === slotId
+          ? { ...feed, label: view.label, color: view.color, angle: view.sublabel, viewId: view.id }
+          : feed
+      )
+    );
   };
 
   return (
     <div className="live-data-container app-shell">
       <div className="panels-viewport">
-        {/* LEFT PANEL — data cards */}
+
+        {/* ── DATA PANEL ─────────────────────────────────────────────────── */}
         <div className={`panel panel-data ${showCameras ? 'panel-slide-out-left' : 'panel-active'}`}>
           <div className="main-live-grid">
             {/* MAP */}
@@ -214,9 +222,7 @@ export default function LiveDataPage({ svgUrl }) {
                   <div className="loading-text">Ładowanie mapy toru...</div>
                 ) : (
                   <svg viewBox={viewBox} className="track-svg">
-                    {pathData && (
-                      <path ref={trackPathRef} d={pathData} className="track-line" />
-                    )}
+                    {pathData && <path ref={trackPathRef} d={pathData} className="track-line" />}
                     {pathData && drivers.map((driver) => {
                       const pos = positions[driver.code];
                       if (!pos) return null;
@@ -252,7 +258,7 @@ export default function LiveDataPage({ svgUrl }) {
                           {driver.pos === 1 ? <Trophy className="gold-trophy" /> : driver.pos}
                         </td>
                         <td className="driver-col">
-                          <span style={{ backgroundColor: driver.color }} className="team-strip"></span>
+                          <span style={{ backgroundColor: driver.color }} className="team-strip" />
                           <strong>{driver.code}</strong>
                         </td>
                         <td className="interval-cell">{driver.interval}</td>
@@ -283,73 +289,111 @@ export default function LiveDataPage({ svgUrl }) {
           </div>
         </div>
 
-        {/* RIGHT PANEL — camera feeds */}
+        {/* ── CAMERAS PANEL ──────────────────────────────────────────────── */}
         <div className={`panel panel-cameras ${showCameras ? 'panel-active' : 'panel-slide-out-right'}`}>
-          <div className={`camera-grid ${expandedCamera ? 'camera-grid-has-expanded' : ''}`}>
-            {CAMERA_FEEDS.map((cam) => {
-              const isExpanded = expandedCamera === cam.id;
-              const isHidden = expandedCamera && !isExpanded;
-              return (
-                <div
-                  key={cam.id}
-                  className={`camera-card ${isExpanded ? 'camera-expanded' : ''} ${isHidden ? 'camera-hidden' : ''}`}
-                  onClick={() => handleCameraClick(cam.id)}
-                >
-                  {/* Fake camera feed background */}
-                  <div className="camera-feed" style={{ '--cam-color': cam.color }}>
-                    <div className="camera-scanlines" />
-                    <div className="camera-noise" />
-                    <div className="camera-vignette" />
+          <div className="cameras-layout">
 
-                    {/* REC badge */}
-                    <div className="camera-rec-badge">
-                      <span className="rec-dot" />
-                      REC
-                    </div>
-
-                    {/* Label */}
-                    <div className="camera-label-bar">
-                      <span className="camera-label">{cam.label}</span>
-                      <span className="camera-angle-tag">{cam.angle}</span>
-                    </div>
-
-                    {/* Hover action buttons */}
-                    <div className="camera-actions">
-                      
-                      <button
-                        className="cam-action-btn"
-                        title="Settings"
-                        onClick={handleSettingsClick}
-                      >
-                        <Settings size={14} />
-                      </button>
+            {/* Camera 2×2 grid */}
+            <div className={`camera-grid ${expandedCamera ? 'camera-grid-has-expanded' : ''}`}>
+              {cameraFeeds.map((cam) => {
+                const isExpanded = expandedCamera === cam.id;
+                const isHidden = expandedCamera && !isExpanded;
+                return (
+                  <div
+                    key={cam.id}
+                    className={`camera-card ${isExpanded ? 'camera-expanded' : ''} ${isHidden ? 'camera-hidden' : ''}`}
+                    onClick={() => handleCameraClick(cam.id)}
+                  >
+                    <div className="camera-feed" style={{ '--cam-color': cam.color }}>
+                      <div className="camera-scanlines" />
+                      <div className="camera-noise" />
+                      <div className="camera-vignette" />
+                      <div className="camera-rec-badge"><span className="rec-dot" />REC</div>
+                      <div className="camera-label-bar">
+                        <span className="camera-label">{cam.label}</span>
+                        <span className="camera-angle-tag">{cam.angle}</span>
+                      </div>
+                      <div className="camera-actions">
+                        <button className="cam-action-btn" title="Camera settings" onClick={(e) => handleSettingsClick(e, cam)}>
+                          <Settings size={14} />
+                        </button>
+                      </div>
                     </div>
                   </div>
+                );
+              })}
+            </div>
+
+            {/* Narrow sidebar: timing + log */}
+            <div className="cameras-sidebar">
+              {/* Mini timing table */}
+              <div className="sidebar-card sidebar-timing">
+                <h3 className="sidebar-card-title">Timing</h3>
+                <div className="sidebar-table-wrapper">
+                  <table className="sidebar-timing-table">
+                    <tbody>
+                      {drivers.map((driver) => (
+                        <tr key={driver.id} className="sidebar-table-row">
+                          <td className="sidebar-pos">
+                            {driver.pos === 1 ? <Trophy className="gold-trophy-sm" /> : driver.pos}
+                          </td>
+                          <td className="sidebar-drv">
+                            <span className="sidebar-strip" style={{ backgroundColor: driver.color }} />
+                            {driver.code}
+                          </td>
+                          <td className="sidebar-interval">{driver.interval}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-              );
-            })}
+              </div>
+
+              {/* Mini race log */}
+              <div className="sidebar-card sidebar-log">
+                <h3 className="sidebar-card-title">Race Log</h3>
+                <div className="sidebar-logs-wrapper">
+                  {currentLogs.map((log) => (
+                    <div
+                      key={log.id}
+                      className="sidebar-log-item"
+                      onClick={() => handleLogClick(log.timestamp)}
+                    >
+                      <span className="sidebar-log-time">{log.time}</span>
+                      <span className="sidebar-log-text">{log.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* SLIDE ARROW */}
+        {/* ── SLIDE ARROW ────────────────────────────────────────────────── */}
         <button
           className={`slide-arrow ${showCameras ? 'arrow-left' : 'arrow-right'}`}
-          onClick={() => {
-            setShowCameras((v) => !v);
-            setExpandedCamera(null);
-          }}
+          onClick={() => { setShowCameras((v) => !v); setExpandedCamera(null); }}
           title={showCameras ? 'Back to Data' : 'Live Cameras'}
         >
           {showCameras ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
         </button>
       </div>
 
-      {/* TIMELINE */}
+      {/* ── CAMERA SELECT POPUP ────────────────────────────────────────── */}
+      {settingsPopup && (
+        <CameraSelectPopup
+          isOpen={!!settingsPopup}
+          onClose={() => setSettingsPopup(null)}
+          slotId={settingsPopup.slotId}
+          slotLabel={settingsPopup.slotLabel}
+          currentViewId={settingsPopup.viewId}
+          onSelect={handleCameraSelect}
+        />
+      )}
+
+      {/* ── TIMELINE ───────────────────────────────────────────────────── */}
       <div className="timeline-container">
-        <button
-          className={`live-button ${isLive ? 'active' : ''}`}
-          onClick={handleGoLive}
-        >
+        <button className={`live-button ${isLive ? 'active' : ''}`} onClick={handleGoLive}>
           <Radio className="live-icon" />
           LIVE
         </button>
