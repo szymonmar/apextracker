@@ -261,7 +261,7 @@ export default function LiveDataPage({ svgUrl }) {
                 <tr>
                   <th>POS</th>
                   <th>DRV</th>
-                  <th>INTERVAL</th>
+                  <th style={{textAlign: 'right'}}>INTERVAL</th>
                 </tr>
               </thead>
               <tbody>
