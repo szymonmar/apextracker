@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import '../css/LivePageHero.css';
+import { Link } from 'react-router-dom';
 
-function LivePageHero({ startTime, finished, imageUrl }) {
+function LivePageHero({ startTime, finished, imageUrl, broadcastUrl }) {
   const [timeDiff, setTimeDiff] = useState(0);
   const [isLive, setIsLive] = useState(false);
 
@@ -85,10 +86,11 @@ function LivePageHero({ startTime, finished, imageUrl }) {
         </div>
         
         <div className="action-buttons">
-          {!finished && <button className="btn-red">▶ JOIN BROADCAST</button>}
-          <button className="btn-outline">
+          {!finished && <Link to={broadcastUrl} className="btn-red">{isLive ? '▶ JOIN BROADCAST' : 'ENTER LOBBY'}</Link>}
+          
+          {!isLive && <button className="btn-outline">
             {finished ? 'WATCH REPLAY' : 'SET REMINDER'}
-          </button>
+          </button>}
         </div>
       </div>
 

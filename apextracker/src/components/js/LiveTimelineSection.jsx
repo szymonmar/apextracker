@@ -18,7 +18,7 @@ function renderAction(action) {
   }
 
   if (action.type === "button") {
-    return <button className={action.className || "btn-red-small"}>{action.value}</button>;
+    return <a href={action.href}><button className={action.className || "btn-red-small"}>{action.value}</button></a>;
   }
 
   return <span className={action.muted ? "muted" : ""}>{action.value}</span>;
