@@ -1,52 +1,33 @@
 .session-list-sidebar {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 1rem 0;
-    color: var(--text-secondary);
-
-  
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1rem 0;
+  color: var(--text-secondary);
 
   h4 {
-    font-size: 1.25rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    color: var(--text-primary);
-    letter-spacing: 1px;
-    margin-bottom: 2rem;
-    margin-left: 1rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-bottom: 1.25rem;
+    margin-left: 1.25rem;
   }
 
   .session {
     display: flex;
     gap: 1rem;
     align-items: center;
-    margin-bottom: 0.5rem;
-    text-decoration: none;
-    padding: 1rem;
-   
-  }
-
-  .avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #e62429, #8a1c1f);
-    border: 2px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-  }
-
-  .username {
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--text-primary);
-  }
-
-  .status {
-    color: var(--text-secondary);
-    text-decoration: none;
-    text-transform: uppercase;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    padding: 0.85rem 1.25rem;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.15s ease;
+    border-left: 2px solid transparent;
   }
 
   .session:hover {
@@ -55,6 +36,53 @@
 
   .session.active {
     background: var(--bg-card-hover);
+    border-left-color: var(--accent-red);
   }
 
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+
+  .avatar-active {
+    background: linear-gradient(135deg, #e62429, #8a1c1f);
+    border-color: transparent;
+    color: #fff;
+  }
+
+  .session-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .username {
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .status {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
 }
