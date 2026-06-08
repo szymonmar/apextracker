@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Trophy, Clock, Flag, Radio, ChevronLeft, ChevronRight, Maximize2, Settings, X } from 'lucide-react';
 import CameraSelectPopup from '../../components/js/CameraSelectPopup';
 import '../css/LiveDataPage.css';
+import TimingTable from '../../components/js/TimingTable';
 
 const MOCK_LOGS = [
   { id: 1, time: '14:00:00', timestamp: 0, text: 'Formation Lap started.' },
