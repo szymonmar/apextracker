@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Trophy, Clock, Flag } from 'lucide-react';
+import { Clock, Flag } from 'lucide-react';
 import '../css/LiveDataPage.css';
+import TimingTable from '../../components/js/TimingTable';
 
 const INITIAL_DRIVERS = [
   { id: 1, pos: 1, code: 'VER', name: 'Max Verstappen', team: 'Red Bull', interval: 'Leader', speed: 0.04 },
@@ -148,37 +149,8 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* TABELA POZYCJI (Bez zmian) */}
-        <div className="timing-card">
-          <h2 className="card-title">Live Timing</h2>
-          <div className="table-wrapper">
-            <table className="timing-table">
-              <thead>
-                <tr>
-                  <th>POS</th>
-                  <th>DRV</th>
-                  <th>TEAM</th>
-                  <th>INTERVAL</th>
-                </tr>
-              </thead>
-              <tbody>
-                {drivers.map((driver) => (
-                  <tr key={driver.id} className="table-row">
-                    <td className="position-col">
-                      {driver.pos === 1 ? <Trophy className="gold-trophy" /> : driver.pos}
-                    </td>
-                    <td>
-                      <span className={`team-strip ${driver.code}`}></span>
-                      <strong>{driver.code}</strong> <span className="full-name">{driver.name}</span>
-                    </td>
-                    <td className="team-cell">{driver.team}</td>
-                    <td className="interval-cell">{driver.interval}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        {/* TABELA POZYCJI */}
+        <TimingTable drivers={drivers} />
       </div>
     </div>
   );

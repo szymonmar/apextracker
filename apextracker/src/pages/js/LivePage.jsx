@@ -2,12 +2,68 @@ import { Link } from "react-router-dom";
 import "../css/LivePage.css";
 import SessionsListSidebar from "../../components/js/SessionsListSidebar";
 import LivePageHero from "../../components/js/LivePageHero";
+import TimelineTable from "../../components/js/TimelineTable";
+import StatusCard from "../../components/js/StatusCard";
 
 function LivePage() {
+  const timelineEvents = [
+    {
+      session: 'PRACTICE 1',
+      status: 'COMPLETED',
+      statusTag: null,
+      time: 'FRIDAY 13:30',
+      trackTemp: '38°C',
+      action: 'WATCH HIGHLIGHTS',
+      actionType: 'link',
+      isActive: false
+    },
+    {
+      session: 'QUALIFYING',
+      status: null,
+      statusTag: { label: 'PENDING', className: 'tag-red-outline' },
+      time: 'SATURDAY 16:00',
+      trackTemp: '41°C (EST)',
+      action: 'ENTER LOBBY',
+      actionType: 'button',
+      isActive: true
+    },
+    {
+      session: 'GRAND PRIX',
+      status: 'UPCOMING',
+      statusTag: null,
+      time: 'SUNDAY 15:00',
+      trackTemp: '35°C (EST)',
+      actionDisabled: 'LOCKED',
+      action: null,
+      isActive: false
+    }
+  ];
+
+  const statusCards = [
+    {
+      title: '❗ URGENT_TELEMETRY',
+      message: 'PU_01 REPLACEMENT CONFIRMED FOR DRIVER 44. STARTING POS PENALTY APPLIED.',
+      timestamp: 'T-MINUS 02:47:11',
+      variant: 'red'
+    },
+    {
+      title: 'ℹ️ CIRCUIT_STATE',
+      message: 'TRACK SURFACE DEGRADATION IN SECTOR 3 HIGHER THAN MODELLED. EXPECT HIGH TIRE WEAR.',
+      timestamp: 'T-MINUS 02:30:04',
+      variant: 'blue'
+    },
+    {
+      title: '✅ STREAM_STATUS',
+      message: 'GLOBAL FEED SYNCED. 4K HDR MASTERING ACTIVE. LOW LATENCY PROTOCOL ENABLED.',
+      timestamp: 'READY_FOR_SPECTRUM',
+      variant: 'green'
+    }
+  ];
+
   return (
     <div className="live-page app-shell">
         <SessionsListSidebar sessions={[
-          { id: 1, name: 'MONACO GP',  serieShort: 'F1', time: 'SAT 13:30', active: true},,
+          { id: 1, name: 'MONACO GP',  serieShort: 'F1', time: 'SAT 13:30', active: true},
           { id: 2, name: '24H OF LE MANS', serieShort: 'WEC', time: 'SAT 16:00', active: false},
           { id: 3, name: 'ITALIAN GP', serieShort: 'MGP', time: 'SAT 15:00', active: false},
         ]} />
@@ -24,70 +80,18 @@ function LivePage() {
 
           <LivePageHero startTime={new Date('2026-06-01T13:30:00')}finished={false} />
 
-          <section className="timeline-section">
-            <div className="section-header">
-              <h3>ROUND TIMELINE (JUN 5-7)</h3>
-            </div>
-            <div className="timeline-table">
-              <div className="table-row table-head">
-                <div>SESSION</div>
-                <div>STATUS</div>
-                <div>LOCAL TIME</div>
-                <div>TRACK TEMP</div>
-                <div>ACTION</div>
-              </div>
-              <div className="table-row">
-                <div>PRACTICE 1</div>
-                <div className="status-text muted">COMPLETED</div>
-                <div>FRIDAY 13:30</div>
-                <div>38°C</div>
-                <div>
-                  <a href="#" className="action-link">WATCH HIGHLIGHTS</a>
-                </div>
-              </div>
-              <div className="table-row active-row">
-                <div>QUALIFYING</div>
-                <div>
-                  <span className="tag tag-red-outline">PENDING</span>
-                </div>
-                <div>SATURDAY 16:00</div>
-                <div>41°C (EST)</div>
-                <div>
-                  <button className="btn-red-small">ENTER LOBBY</button>
-                </div>
-              </div>
-              <div className="table-row">
-                <div>GRAND PRIX</div>
-                <div className="status-text muted">UPCOMING</div>
-                <div>SUNDAY 15:00</div>
-                <div>35°C (EST)</div>
-                <div className="muted">LOCKED</div>
-              </div>
-            </div>
-          </section>
+          <TimelineTable events={timelineEvents} />
 
           <section className="status-cards-grid">
-            <div className="status-card">
-              <h4 className="card-title red-accent">❗ URGENT_TELEMETRY</h4>
-              <p>
-                PU_01 REPLACEMENT CONFIRMED FOR DRIVER 44. STARTING POS PENALTY APPLIED.
-              </p>
-              <span className="timestamp">T-MINUS 02:47:11</span>
-            </div>
-            <div className="status-card">
-              <h4 className="card-title blue-accent">ℹ️ CIRCUIT_STATE</h4>
-              <p>
-                TRACK SURFACE DEGRADATION IN SECTOR 3 HIGHER THAN MODELLED. EXPECT HIGH TIRE WEAR.
-              </p>
-              <span className="timestamp">T-MINUS 02:30:04</span>
-            </div>
-            <div className="status-card">
-              <h4 className="card-title green-accent">✅ STREAM_STATUS</h4>
-              <p>
-                GLOBAL FEED SYNCED. 4K HDR MASTERING ACTIVE. LOW LATENCY PROTOCOL ENABLED.
-              </p>
-              <span className="timestamp">READY_FOR_SPECTRUM</span>
-            </div>
+            {statusCards.map((card, index) => (
+              <StatusCard
+                key={index}
+                title={card.title}
+                message={card.message}
+                timestamp={card.timestamp}
+                variant={card.variant}
+              />
+            ))}
           </section>
         </div>
     </div>

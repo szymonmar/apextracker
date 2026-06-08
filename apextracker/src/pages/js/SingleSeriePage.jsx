@@ -3,10 +3,71 @@ import { Link, useParams } from 'react-router-dom';
 import '../css/SingleSeriePage.css';
 import Hero from '../../components/js/Hero';
 import CalendarCard from '../../components/js/CalendarCard';
+import StandingsSection from '../../components/js/StandingsSection';
 
 const SingleSeriePage = () => {
     const { slug } = useParams();
     const seriesName = slug ? slug.replace(/-/g, ' ').toUpperCase() : 'FORMULA 1';
+
+    // Dane dla Drivers Championship
+    const driversStandings = [
+        {
+            rank: '01',
+            driverNumber: '77',
+            name: 'LEWIS HAMILTON',
+            team: 'MERCEDES-BENZ AMG',
+            points: '112 pts'
+        },
+        {
+            rank: '02',
+            driverNumber: '33',
+            name: 'MAX VERSTAPPEN',
+            team: 'RED BULL RACING',
+            points: '85 pts'
+        },
+        {
+            rank: '03',
+            driverNumber: '16',
+            name: 'CHARLES LECLERC',
+            team: 'SCUDERIA FERRARI',
+            points: '67 pts'
+        }
+    ];
+
+    // Konfiguracja pól dla Drivers Championship
+    const driversFieldsConfig = [
+        { key: 'rank', className: 'rank' },
+        { key: 'driverNumber', className: 'driver-number' },
+        { key: 'name', className: 'name' },
+        { key: 'team', className: 'team' },
+        { key: 'points', className: 'points' }
+    ];
+
+    // Dane dla Constructors Championship
+    const constructorsStandings = [
+        {
+            rank: '01',
+            name: 'MERCEDES-BENZ AMG',
+            points: '112 pts'
+        },
+        {
+            rank: '02',
+            name: 'RED BULL RACING',
+            points: '87 pts'
+        },
+        {
+            rank: '03',
+            name: 'SCUDERIA FERRARI',
+            points: '67 pts'
+        }
+    ];
+
+    // Konfiguracja pól dla Constructors Championship
+    const constructorsFieldsConfig = [
+        { key: 'rank', className: 'rank' },
+        { key: 'name', className: 'name' },
+        { key: 'points', className: 'points' }
+    ];
 
     return (
         <div className="single-serie-page">
@@ -66,7 +127,6 @@ const SingleSeriePage = () => {
                             </div>
                         </section>
 
-                        {/* PRAWA KOLUMNA: NEWS */}
                         <section className="news-section">
                             <h2 className="section-title">NEWS</h2>
                             <div className="card news-card">
@@ -83,57 +143,16 @@ const SingleSeriePage = () => {
 
                     {/* DOLNA SEKCJA: TABELE MISTRZOSTW */}
                     <div className="standings-grid">
-
-                        {/* Klasyfikacja Kierowców */}
-                        <section className="standings-section">
-                            <h2 className="section-title">DRIVERS CHAMPIONSHIP</h2>
-                            <div className="standings-list">
-                                <div className="standing-row">
-                                    <span className="rank">01</span>
-                                    <span className="driver-number">77</span>
-                                    <span className="name">LEWIS HAMILTON</span>
-                                    <span className="team">MERCEDES-BENZ AMG</span>
-                                    <span className="points">112 pts</span>
-                                </div>
-                                <div className="standing-row">
-                                    <span className="rank">02</span>
-                                    <span className="driver-number">33</span>
-                                    <span className="name">MAX VERSTAPPEN</span>
-                                    <span className="team">RED BULL RACING</span>
-                                    <span className="points">85 pts</span>
-                                </div>
-                                <div className="standing-row">
-                                    <span className="rank">03</span>
-                                    <span className="driver-number">16</span>
-                                    <span className="name">CHARLES LECLERC</span>
-                                    <span className="team">SCUDERIA FERRARI</span>
-                                    <span className="points">67 pts</span>
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* Klasyfikacja Konstruktorów */}
-                        <section className="standings-section">
-                            <h2 className="section-title">CONSTRUCTORS CHAMPIONSHIP</h2>
-                            <div className="standings-list">
-                                <div className="standing-row">
-                                    <span className="rank">01</span>
-                                    <span className="name">MERCEDES-BENZ AMG</span>
-                                    <span className="points">112 pts</span>
-                                </div>
-                                <div className="standing-row">
-                                    <span className="rank">02</span>
-                                    <span className="name">RED BULL RACING</span>
-                                    <span className="points">87 pts</span>
-                                </div>
-                                <div className="standing-row">
-                                    <span className="rank">03</span>
-                                    <span className="name">SCUDERIA FERRARI</span>
-                                    <span className="points">67 pts</span>
-                                </div>
-                            </div>
-                        </section>
-
+                        <StandingsSection
+                            title="DRIVERS CHAMPIONSHIP"
+                            standings={driversStandings}
+                            fieldsConfig={driversFieldsConfig}
+                        />
+                        <StandingsSection
+                            title="CONSTRUCTORS CHAMPIONSHIP"
+                            standings={constructorsStandings}
+                            fieldsConfig={constructorsFieldsConfig}
+                        />
                     </div>
                 </div>
 
