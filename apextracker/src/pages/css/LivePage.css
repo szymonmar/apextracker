@@ -1,10 +1,7 @@
-
-
 .live-page {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 280px 1fr;
   gap: 3em;
-  
 
   .btn-red,
   .btn-red-small {
@@ -33,20 +30,45 @@
     border-radius: 0.6rem;
   }
 
+  /* Content fade transition */
   .live-feed-content {
-    /* padding: 1.2rem 1.5rem; */
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    /* max-width: calc(100% - 300px); */
     margin: 0 auto;
     width: 100%;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+
+  .content-fade-out {
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+  }
+
+  .content-fade-in {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .event-header {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+  }
+
+  .event-header h1 {
+    font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
   }
 
   .tags {
@@ -66,25 +88,18 @@
     color: var(--text-primary);
   }
 
-  .breadcrumb {
-    color: var(--text-muted);
+  .tag-red-outline {
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
   }
 
-  .event-header h1 {
-    font-size: clamp(1.75rem, 2.4vw, 2.4rem);
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  .action-link {
+    color: var(--accent-red);
+    text-decoration: none;
+    font-weight: 700;
   }
-
-  .event-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    color: var(--text-muted);
-    font-size: 0.88rem;
-  }
-
-
 
   .timeline-section {
     background-color: var(--bg-panel);
@@ -127,17 +142,8 @@
     color: var(--text-muted);
   }
 
-  .tag-red-outline {
-    border: 1px solid var(--accent-red);
-    color: var(--accent-red);
-    padding: 0.25rem 0.6rem;
-    font-size: 0.75rem;
-  }
-
-  .action-link {
-    color: var(--accent-red);
-    text-decoration: none;
-    font-weight: 700;
+  .breadcrumb {
+    color: var(--text-muted);
   }
 
   .status-cards-grid {
@@ -146,6 +152,7 @@
     gap: 1.5rem;
   }
 
+  /* Keep these here as fallback even though LiveStatusCard.css also defines them */
   .status-card {
     background-color: var(--bg-panel);
     border: 1px solid var(--border-color);
@@ -155,22 +162,10 @@
     gap: 0.75rem;
   }
 
-  .card-title {
-    margin: 0;
-    font-size: 0.95rem;
-  }
-
-  .red-accent {
-    color: #fb7185;
-  }
-
-  .blue-accent {
-    color: #60a5fa;
-  }
-
-  .green-accent {
-    color: #34d399;
-  }
+  .card-title { margin: 0; font-size: 0.95rem; }
+  .red-accent  { color: #fb7185; }
+  .blue-accent { color: #60a5fa; }
+  .green-accent{ color: #34d399; }
 
   .status-card p {
     font-size: 0.92rem;
@@ -185,23 +180,15 @@
   }
 
   @media (max-width: 1200px) {
-    .hero-grid {
-      grid-template-columns: 1fr;
-    }
+    .hero-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 950px) {
-    .sidebar {
-      display: none;
-    }
+    grid-template-columns: 1fr;
 
-    .top-navbar {
-      padding: 1rem 1.5rem;
-    }
+    .session-list-sidebar { display: none; }
 
-    .live-feed-content {
-      padding: 1.5rem;
-    }
+    .live-feed-content { padding: 1.5rem; }
 
     .section-header {
       flex-direction: column;
@@ -213,28 +200,11 @@
       gap: 0.75rem;
     }
 
-    .table-head {
-      display: none;
-    }
+    .table-head { display: none; }
   }
 
   @media (max-width: 680px) {
-    .nav-links {
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .search-bar {
-      min-width: 160px;
-    }
-
-    .weather-widget,
-    .provider-card,
-    .countdown-panel,
-    .broadcast-panel,
-    .timeline-section,
-    .status-card {
-      padding: 1rem;
-    }
+    .status-card,
+    .timeline-section { padding: 1rem; }
   }
 }

@@ -1,0 +1,18 @@
+/* RegistrationPage.css - Reuses styles from LoginPage.css with additional adjustments */
+@import url('./LoginPage.css');
+
+.registration-page{
+    .registration-card {
+    max-width: 500px;
+    }
+
+    .registration-card .auth-form {
+    gap: 1.3rem;
+    }
+
+    @media (max-width: 768px) {
+    .registration-card {
+        max-width: 100%;
+    }
+    }
+}
