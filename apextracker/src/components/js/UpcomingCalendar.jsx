@@ -30,7 +30,7 @@ function UpcomingCalendar() {
     <section className="upcoming-calendar">
       <div className="section-header">
         <h2>Upcoming Calendar</h2>
-        <NavLink to="/schedule" className="view-all">Schedule View</NavLink>
+        <NavLink to="/schedule" className="view-all">Schedule</NavLink>
       </div>
       <div className="calendar-events">
         {events.map((event) => (
