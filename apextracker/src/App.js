@@ -10,6 +10,7 @@ import HomePage from './pages/js/HomePage';
 import LiveDataPage from './pages/js/LiveDataPage';
 import LoginPage from './pages/js/LoginPage';
 import RegistrationPage from './pages/js/RegistrationPage';
+import NotFoundPage from './pages/js/NotFoundPage';
 
 
 function RoundDetail() {
@@ -34,6 +35,7 @@ function AppContent() {
         <Route path="/live/:sessionId" element={<LiveDataPage svgUrl='/paths/RaceCircuitMonaco.svg' />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
