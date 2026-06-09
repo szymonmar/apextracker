@@ -1,6 +1,7 @@
-
+import React, { useState } from "react"; // Dodano useState
 import EventFilterSidebar from "../../components/js/EventFilterSidebar";
 import EventListElement from "../../components/js/EventListElement";
+import EventDetailPanel from "../../components/js/EventDetailPanel"; // Dodamy ten komponent w kroku 2
 import "../css/SchedulePage.css";
 
 function randLorem(wordCount = 3) {
@@ -17,6 +18,8 @@ function formatShortDate(d) {
 }
 
 function SchedulePage() {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+
   const seriesList = ['Formula 1', 'WEC', 'IndyCar', 'GT World Challenge'];
   const events = Array.from({ length: 12 }).map((_, i) => {
     const date = new Date();
@@ -33,6 +36,14 @@ function SchedulePage() {
     };
   });
 
+  const handleEventClick = (event) => {
+    setSelectedEvent(event);
+  };
+
+  const handleClosePanel = () => {
+    setSelectedEvent(null);
+  };
+
   return (
     <div className="schedule-page app-shell">
       <EventFilterSidebar seriesList={seriesList} />
@@ -48,13 +59,30 @@ function SchedulePage() {
 
         <div className="events">
           {events.map((e) => (
-            <EventListElement key={e.id} event={e} />
+            // Wrapujemy element w div, który nasłuchuje kliknięcia
+            <div 
+              key={e.id} 
+              onClick={() => handleEventClick(e)}
+              className="event-clickable-wrapper"
+            >
+              <EventListElement event={e} />
+            </div>
           ))}
         </div>
       </main>
+
+      
+      <EventDetailPanel 
+        event={selectedEvent} 
+        isOpen={selectedEvent !== null} 
+        onClose={handleClosePanel} 
+      />
+      
+      {selectedEvent && (
+        <div className="panel-overlay" onClick={handleClosePanel}></div>
+      )}
     </div>
   );
 }
 
 export default SchedulePage;
-
