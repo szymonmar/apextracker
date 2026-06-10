@@ -67,9 +67,6 @@ function RegistrationPage() {
     setSuccess('');
 
     if (!validateForm()) {
-      ReactGA.event("registration_failed", {
-        reason: "Form Validation Error"
-      });
       return;
     }
 
@@ -93,10 +90,10 @@ function RegistrationPage() {
         navigate('/');
       }, 1200);
     } catch (err) {
-      ReactGA.event("registration_failed", {
-        reason: authError
-      });
       setError(parseAuthError(err));
+      ReactGA.event("registration_failed", {
+        reason: parseAuthError(err)
+      });
     } finally {
       setLoading(false);
     }
