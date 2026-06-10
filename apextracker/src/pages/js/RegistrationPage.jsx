@@ -67,6 +67,9 @@ function RegistrationPage() {
     setSuccess('');
 
     if (!validateForm()) {
+      ReactGA.event("registration_failed", {
+        reason: parseAuthError(err)
+      });
       return;
     }
 
