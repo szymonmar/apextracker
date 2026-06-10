@@ -14,7 +14,7 @@ import RegistrationPage from './pages/js/RegistrationPage';
 import NotFoundPage from './pages/js/NotFoundPage';
 import { hotjar } from 'react-hotjar'
 import ReactGA from "react-ga4";
-import AnalyticsListener from "./components/AnalyticsListener";
+import AnalyticsListener from "./components/js/AnalyticsListener";
 
 
 
