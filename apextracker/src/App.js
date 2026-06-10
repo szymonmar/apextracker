@@ -12,7 +12,11 @@ import LiveDataPage from './pages/js/LiveDataPage';
 import LoginPage from './pages/js/LoginPage';
 import RegistrationPage from './pages/js/RegistrationPage';
 import NotFoundPage from './pages/js/NotFoundPage';
-import { hotjar } from 'react-hotjar';
+import { hotjar } from 'react-hotjar'
+import { useEffect } from "react";
+import ReactGA from "react-ga4";
+import AnalyticsListener from "./components/AnalyticsListener";
+
 
 
 function RoundDetail() {
@@ -49,10 +53,12 @@ function App() {
     const siteId = 871612;
     const hotjarVersion = 6;
     hotjar.initialize(siteId, hotjarVersion);
+    ReactGA.initialize("G-E7379C3V5B");
   }, []);
 
   return (
     <BrowserRouter>
+      <AnalyticsListener />
       <AppContent />
     </BrowserRouter>
   );
