@@ -13,7 +13,6 @@ import LoginPage from './pages/js/LoginPage';
 import RegistrationPage from './pages/js/RegistrationPage';
 import NotFoundPage from './pages/js/NotFoundPage';
 import { hotjar } from 'react-hotjar'
-import { useEffect } from "react";
 import ReactGA from "react-ga4";
 import AnalyticsListener from "./components/AnalyticsListener";
 
