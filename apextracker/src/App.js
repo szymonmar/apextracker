@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 import Header from './components/js/Header';
 import LivePage from './pages/js/LivePage';
@@ -11,6 +12,7 @@ import LiveDataPage from './pages/js/LiveDataPage';
 import LoginPage from './pages/js/LoginPage';
 import RegistrationPage from './pages/js/RegistrationPage';
 import NotFoundPage from './pages/js/NotFoundPage';
+import { hotjar } from 'react-hotjar';
 
 
 function RoundDetail() {
@@ -43,6 +45,12 @@ function AppContent() {
 
 
 function App() {
+  useEffect(() => {
+    const siteId = 871612;
+    const hotjarVersion = 6;
+    hotjar.initialize(siteId, hotjarVersion);
+  }, []);
+
   return (
     <BrowserRouter>
       <AppContent />
