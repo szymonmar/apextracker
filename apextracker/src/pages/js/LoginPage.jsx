@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import '../css/LoginPage.css';
 import { Mail, Lock, AlertCircle } from 'lucide-react';
 import { loginWithEmail, parseAuthError } from '../../firebase/authService';
+import ReactGA from "react-ga4";
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -27,9 +28,15 @@ function LoginPage() {
       localStorage.setItem('authToken', user.token);
       localStorage.setItem('userEmail', user.email || '');
       localStorage.setItem('username', user.username || '');
+      ReactGA.event("login", {
+        method: "Email"
+      });
       navigate('/');
     } catch (err) {
       setError(parseAuthError(err));
+      ReactGA.event("login_failed", {
+        reason: parseAuthError(err)
+      });
     } finally {
       setLoading(false);
     }

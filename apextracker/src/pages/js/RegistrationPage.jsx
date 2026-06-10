@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import '../css/RegistrationPage.css';
 import { Mail, Lock, User, AlertCircle, CheckCircle } from 'lucide-react';
 import { registerWithEmail, parseAuthError } from '../../firebase/authService';
+import ReactGA from "react-ga4";
 
 function RegistrationPage() {
   const [formData, setFormData] = useState({
@@ -81,12 +82,17 @@ function RegistrationPage() {
       localStorage.setItem('authToken', user.token);
       localStorage.setItem('userEmail', user.email || '');
       localStorage.setItem('username', user.username || '');
-
+      ReactGA.event("sign_up", {
+        method: "Email"
+      });
       setSuccess('Account created successfully! Redirecting...');
       setTimeout(() => {
         navigate('/');
       }, 1200);
     } catch (err) {
+      ReactGA.event("registration_failed", {
+        reason: parseAuthError(err)
+      });
       setError(parseAuthError(err));
     } finally {
       setLoading(false);
